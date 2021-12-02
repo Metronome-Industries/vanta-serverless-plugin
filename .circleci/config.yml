@@ -1,0 +1,48 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.3.0
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: lts
+    steps:
+      - checkout
+      - node/install-npm
+      - node/install-packages
+      - run:
+          name: "Lint"
+          command: npm run-script lint
+      - run:
+          name: "Test"
+          command: npm test
+      - run:
+          name: "Build"
+          command: "npm run-script prepack"
+  publish:
+    executor:
+      name: node/default
+      tag: lts
+    steps:
+      - checkout
+      - node/install-npm
+      - node/install-packages
+      - run:
+          name: "Setup npm"
+          command: |
+            echo -e "\n//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+            echo "@metronome-industries:registry=https://npm.pkg.github.com" >> ~/.npmrc
+      - run:
+          name: "Publish"
+          command: npm publish
+workflows:
+  test-and-publish:
+    jobs:
+      - test
+      - publish:
+          context: NPMJS ReadWrite
+          requires:
+            - test
+          filters:
+            branches:
+              only: main
