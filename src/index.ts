@@ -1,4 +1,4 @@
-export default class VantaServerlessPlugin {
+class VantaServerlessPlugin {
   constructor(serverless: any) {
     // In later versions of serverless the service is just a string
     const serviceName =
@@ -22,3 +22,6 @@ export default class VantaServerlessPlugin {
     };
   }
 }
+
+// Needed because serverless uses commonjs imports for plugins
+module.exports = VantaServerlessPlugin;
