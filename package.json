@@ -1,13 +1,12 @@
 {
-  "name": "TODO",
+  "name": "vanta-serverless-plugin",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "A plugin that tags serverless created resources with the tags Vanta requires for compliance.",
   "license": "Apache-2.0",
   "author": "Metronome Industries",
-  "repository": "https://github.com/Metronome-Industries/TODO",
+  "repository": "https://github.com/Metronome-Industries/vanta-serverless-plugin",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.13",
     "jest": "^26.4.2",

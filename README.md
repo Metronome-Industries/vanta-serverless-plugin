@@ -1,5 +1,16 @@
-# template-public-npm-package-TODO
+# vanta-serverless-plugin
 
-Template repo for an public npm package that is published to npm.
+A serverless plugin that tags the created resources appropriately for Vanta compliance checks.
 
-To start development make sure you replace all `TODO`s across the codebase with the relevant information.
+## Installation
+
+```
+npm install vanta-serverless-plugin --save-dev
+```
+
+Then add it to your `serverless.yml`
+
+```yml
+plugins:
+  - vanta-serverless-plugin
+```
