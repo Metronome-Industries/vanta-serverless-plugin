@@ -29,9 +29,7 @@ jobs:
       - node/install-packages
       - run:
           name: "Setup npm"
-          command: |
-            echo -e "\n//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-            echo "@metronome-industries:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          command: echo -e "\n//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - run:
           name: "Publish"
           command: npm publish
