@@ -1,6 +1,6 @@
 {
   "name": "vanta-serverless-plugin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A plugin that tags serverless created resources with the tags Vanta requires for compliance.",
   "license": "Apache-2.0",
   "author": "Metronome Industries",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prepack": "rm -rf ./lib && tsc",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --passWithNoTests",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   }
