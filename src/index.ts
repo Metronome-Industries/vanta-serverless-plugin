@@ -21,7 +21,7 @@ class VantaServerlessPlugin {
     const functionNames = Object.keys(serverless.service.functions);
     functionNames.forEach((functionName) => {
       serverless.service.functions[functionName].tags = {
-        VantaDescription: `${functionName} lambda function`,
+        VantaDescription: `${functionName} AWS lambda function`,
         ...serverless.service.functions[functionName].tags,
       };
     });
