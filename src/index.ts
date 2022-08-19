@@ -9,7 +9,7 @@ class VantaServerlessPlugin {
 
     serverless.service.provider[deploymentBucketKey] = {
       ...(serverless.service.provider?.[deploymentBucketKey] ?? {}),
-      blockPublicAccess: true, // This is by defualt true in serverless due to ACLs and policies, but we want to be explicit for Vanta
+      blockPublicAccess: true, // This is by default true in serverless due to ACLs and policies, but we want to be explicit for Vanta
       tags: {
         VantaDescription: `A bucket which holds the source code for the ${serviceName} service used while deploying the lambda functions`,
         VantaContainsUserData: "false", // Only source code no user data
@@ -17,6 +17,14 @@ class VantaServerlessPlugin {
         ...(serverless.service.provider?.[deploymentBucketKey]?.tags ?? {}),
       },
     };
+
+    const functionNames = Object.keys(serverless.service.functions);
+    functionNames.forEach((functionName) => {
+      serverless.service.functions[functionName].tags = {
+        VantaDescription: `${functionName} lambda function`,
+        ...serverless.service.functions[functionName].tags,
+      };
+    });
   }
 }
 
